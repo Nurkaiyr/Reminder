@@ -1,0 +1,64 @@
+﻿<Window x:Class="TimerWithReminder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimerWithReminder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+            <Label Content="Мои напоминания" FontSize="22" HorizontalAlignment="Left"
+                   VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White" BorderThickness="0"/>
+
+            <Button Name="CreateBtn" Content="Создать" FontSize="16"
+                HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Padding="5,2,5,3"
+                    BorderBrush="{x:Null}" Background="White" Click="CreateButtonClick" Foreground="#FF255176" Width="150" Height="76"/>
+        </DockPanel>
+
+
+        <ListView Grid.Row="1" Name="NotificationList" BorderBrush="{x:Null}" Foreground="#FF295478">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Напоминание" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NotificationText}" FontSize="14"
+                                            Foreground="Black" Background="Transparent" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Напомнить в" Width="160">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NotifyTime}" FontSize="14"
+                                            Foreground="Black" Background="Transparent" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Удалить" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="DeleteBtn" Width="80" Content="Удалить" FontSize="14"
+                                            BorderThickness="0" Foreground="#FFCF1414" Background="Transparent" Click="DeleteButtonClick" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
